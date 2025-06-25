@@ -1,10 +1,11 @@
+import { AnimatedCards } from "@/components/animatedCards";
 import { LampContainer } from "@/components/ui/lamp";
 import { motion } from "motion/react";
 
 const Aboutus = () => {
   return (
     <div>
-      <LampContainer>   
+      <LampContainer>
         <motion.h1
           initial={{ opacity: 0.5, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -18,6 +19,7 @@ const Aboutus = () => {
           Tk-tech
         </motion.h1>
       </LampContainer>
+      <AnimatedCards />
     </div>
   );
 };
