@@ -8,8 +8,8 @@ import {
 } from "@/components/ui/accordion";
 
 import blockchainAnimation from "@/animations/blockchain.json";
-import aiAnimation from "@/animations/ai.json";
-import iotAnimation from "@/animations/iot.json";
+import brainAnimation from "@/animations/brain.json";
+import iotAnimation from "@/animations/network.json";
 
 type FeatureKey = "blockchain" | "ai" | "iot";
 
@@ -30,7 +30,7 @@ const featureData: Record<FeatureKey, FeatureData> = {
     title: "Artificial Intelligence",
     description:
       "Empower systems to learn, adapt, and evolve. From intelligent automation to real-time decision-making, AI transforms raw data into actionable insights, enabling smarter workflows, faster operations, and hyper-personalized experiences.",
-    animation: aiAnimation,
+    animation: brainAnimation,
   },
   iot: {
     title: "Internet of Things",

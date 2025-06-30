@@ -1,35 +1,32 @@
-"use client";
-
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 const cardData = [
   {
-    title: "Joy",
+    title: "Empowering Intelligent Futures",
     description:
-      "Passion and enthusiasm are contagious. Clients and partners tell us we bring a sense of fun to what we do...",
-    image: "/images/joy.jpg",
+      "Our mission is to integrate AI into every facet of business, driving smarter operations, predictive insights, and automated efficiency for a future where data works for you.",
+    image: "/missions/mission1.png", // Image: Futuristic AI interface, data visualization
   },
   {
-    title: "Courage",
+    title: "Building Trust Through Decentralization",
     description:
-      "We embrace challenges and take bold steps. Courage drives us to innovate and push limits.",
-    image: "/images/courage.jpg",
+      "We're on a mission to pioneer secure and transparent ecosystems using Blockchain, ensuring immutable data integrity, verifiable transactions, and unparalleled trust across industries.",
+    image: "/missions/mission@2.png", // Image: Blockchain network, secure digital lock
   },
   {
-    title: "Wisdom",
+    title: "Connecting the World, Intelligently",
     description:
-      "With experience comes wisdom. Our insights guide decisions that shape the future.",
-    image: "/images/wisdom.jpg",
+      "Our mission is to deploy cutting-edge IoT solutions that bridge the physical and digital, creating smart environments, optimizing resource management, and enhancing real-time decision-making.",
+    image: "/missions/mission3.png", // Image: Connected devices, smart city scape
   },
   {
-    title: "Empathy",
+    title: "Innovating for a Smarter Tomorrow",
     description:
-      "We understand, we care. Empathy builds trust, and trust builds relationships.",
-    image: "/images/empathy.jpg",
+      "United by a vision of technological advancement, we strive to continually innovate, blending AI, Blockchain, and IoT to solve complex challenges and create impactful solutions for humanity.",
+    image: "/missions/mission3.png", // Image: Abstract representation of innovation, gears, lightbulb
   },
 ];
-
 export const AnimatedCards = () => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -38,11 +35,15 @@ export const AnimatedCards = () => {
   });
 
   return (
-    <section
+    <div
       ref={containerRef}
-      className="h-[400vh] relative bg-gradient-to-br from-[#1f1f1f] to-[#2b2b40] text-white"
+      className="h-[400vh] relative bg-background text-white"
     >
-      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
+      <div className="sticky top-10 h-screen w-full flex items-center justify-center overflow-hidden">
+        <motion.h1 className="absolute top-11 text-2xl md:text-4xl font-bold text-primary z-10">
+          Missions{" "}
+        </motion.h1>
+
         {cardData.map((card, index) => {
           const start = index * 0.2;
           const mid = start + 0.15;
@@ -65,7 +66,7 @@ export const AnimatedCards = () => {
             "0deg",
             "-10deg",
           ]);
-          const opacity = useTransform(scrollYProgress, inputRange, [0, 1, 0]);
+          const opacity = useTransform(scrollYProgress, inputRange, [1, 1, 1]);
           const scale = useTransform(
             scrollYProgress,
             inputRange,
@@ -76,17 +77,27 @@ export const AnimatedCards = () => {
             <motion.div
               key={index}
               style={{ x, y, rotate, opacity, scale }}
-              className="absolute origin-center w-[350px] max-w-[90vw] p-6 bg-white text-black rounded-2xl shadow-[0_15px_30px_rgba(0,0,0,0.25)] flex flex-col items-center gap-4"
+              className="absolute origin-center flex flex-col md:flex-row items-center  gap-6"
             >
-              <img
-                src={card.image}
-                alt={card.title}
-                className="rounded-xl w-full h-[200px] object-cover"
-              />
+              {/* Image Card */}
+              <div className="w-[350px] max-w-[90vw] rounded-2xl  p-4">
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  className="rounded-xl w-full h-fullCryptocurrency_Exchange_Development_Company-removebg-preview object-cover"
+                />
+              </div>
+
+              {/* Turbo Description */}
+              <div className="max-w-[300px] text-left bg-transparent border shadow-blue-300 shadow-md rounded-2xl  p-4">
+                <p className="text-lg text-primary text-left">
+                  {card.description}
+                </p>
+              </div>
             </motion.div>
           );
         })}
       </div>
-    </section>
+    </div>
   );
 };

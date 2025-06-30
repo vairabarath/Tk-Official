@@ -10,7 +10,7 @@ export const ContactUsPage = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-600">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent  bg-gradient-to-r from-[#3b82f6]/80 to-primary">
             Contact Us
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
 import { MobileNavMenu, NavMenu } from "./Navbar"; // full menu (desktop)
@@ -7,9 +7,34 @@ import { cn } from "@/lib/utils";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showHeader, setShowHeader] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;  
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        setShowHeader(false);
+      } else {
+        setShowHeader(true);
+      }
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  });
 
   return (
-    <header className="w-full sticky top-0 z-50 bg-background border-b">
+    <header
+      className={cn(
+        "w-full sticky top-0 z-50 transition-transform duration-300 bg-background border-b",
+        showHeader ? "translate-y-0" : "-translate-y-full"
+      )}
+    >
       <div className="flex h-[88px] justify-between items-center max-w-7xl mx-auto px-4">
         {/* Logo */}
         <h1 className="text-xl font-bold">Logo</h1>
@@ -50,7 +75,7 @@ const Header = () => {
         )}
       >
         <div className="rounded-md border bg-card p-2 shadow-sm">
-          <MobileNavMenu />
+          <MobileNavMenu  closeMenu={() => setIsMobileMenuOpen(false)}/>
           <Button variant="default" className="mt-4 w-full">
             Button
           </Button>
