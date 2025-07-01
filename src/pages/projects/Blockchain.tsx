@@ -67,7 +67,7 @@ const projects = [
 
 const BlockchainPage = () => {
   return (
-    <main className="bg-background text-foreground min-h-screen py-16 px-4">
+    <main className="bg-background text-foreground min-h-screen  px-4">
       <BlockchainHero />
 
       {/* Features Section */}

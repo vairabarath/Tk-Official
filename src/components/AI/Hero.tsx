@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
-    <section className="bg-background text-foreground py-20 px-4 md:px-12 lg:px-24 w-full">
+    <section className="bg-background text-foreground px-4 md:px-12 lg:px-24 w-full">
       <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12 max-w-7xl mx-auto">
         {/* Text Content */}
         <motion.div

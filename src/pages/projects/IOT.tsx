@@ -80,8 +80,8 @@ export default function IotPage() {
           className="w-full flex flex-col-reverse lg:flex-row items-center justify-between gap-8 pt-8"
         >
           {/* Text Content */}
-          <div className="text-center lg:text-left max-w-2xl">
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight font-SpaceGroteskAnimation - 1751086389771">
+          <div className="text-center md:text-left max-w-2xl">
+            <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">
               The Future of IoT Starts Here
             </h1>
             <p className="mt-4 text-lg text-muted-foreground">

@@ -4,10 +4,15 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="w-full bg-background text-foreground py-20 px-4 md:px-8">
+    <section className="w-full bg-background text-foreground px-4 md:px-8">
       <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12">
         {/* Text */}
-        <div className="flex-1 text-center md:text-left">
+        <motion.div
+          className="text-center md:text-left max-w-2xl"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+        >
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">
             The Future of Blockchain Starts Now
           </h1>
@@ -23,7 +28,7 @@ export default function Hero() {
               Learn More
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Lottie Animation */}
         <motion.div
