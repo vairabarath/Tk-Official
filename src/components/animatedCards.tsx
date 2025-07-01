@@ -27,11 +27,14 @@ const cardData = [
     image: "/missions/mission3.png", // Image: Abstract representation of innovation, gears, lightbulb
   },
 ];
+
 export const AnimatedCards = () => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"],
+    // Modified offset: animation starts when section is 80% visible (0.2 from top)
+    // and continues until section completely exits the viewport
+    offset: ["0.2 1", "end start"],
   });
 
   return (
@@ -43,12 +46,16 @@ export const AnimatedCards = () => {
         <motion.h1 className="absolute top-11 text-2xl md:text-4xl font-bold text-primary z-10">
           Missions{" "}
         </motion.h1>
-
         {cardData.map((card, index) => {
-          const start = index * 0.2;
-          const mid = start + 0.15;
-          const end = start + 0.3;
+          // Responsive intervals: reduced gap and slower speed
+          const isMobile =
+            typeof window !== "undefined" && window.innerWidth < 768;
+          const interval = isMobile ? 0.12 : 0.08;
+          const duration = isMobile ? 0.5 : 0.25;
 
+          const start = index * interval;
+          const mid = start + duration * 0.5;
+          const end = start + duration;
           const inputRange = [start, mid, end];
 
           const x = useTransform(scrollYProgress, inputRange, [
@@ -77,19 +84,18 @@ export const AnimatedCards = () => {
             <motion.div
               key={index}
               style={{ x, y, rotate, opacity, scale }}
-              className="absolute origin-center flex flex-col md:flex-row items-center  gap-6"
+              className="absolute origin-center flex flex-col md:flex-row items-center gap-6"
             >
               {/* Image Card */}
-              <div className="w-[350px] max-w-[90vw] rounded-2xl  p-4">
+              <div className="w-[350px] max-w-[90vw] rounded-2xl p-4">
                 <img
                   src={card.image}
                   alt={card.title}
-                  className="rounded-xl w-full h-fullCryptocurrency_Exchange_Development_Company-removebg-preview object-cover"
+                  className="rounded-xl w-full h-full object-cover"
                 />
               </div>
-
-              {/* Turbo Description */}
-              <div className="max-w-[300px] text-left bg-transparent border shadow-blue-300 shadow-md rounded-2xl  p-4">
+              {/* Description */}
+              <div className="max-w-[300px] text-left bg-transparent border shadow-blue-300 shadow-md rounded-2xl p-4">
                 <p className="text-lg text-primary text-left">
                   {card.description}
                 </p>
