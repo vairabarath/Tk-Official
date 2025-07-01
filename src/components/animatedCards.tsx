@@ -32,15 +32,15 @@ export const AnimatedCards = () => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    // Modified offset: animation starts when section is 80% visible (0.2 from top)
-    // and continues until section completely exits the viewport
-    offset: ["0.2 1", "end start"],
+    // Modified offset: animation starts when section is 80% visible
+    // and completes faster to avoid sticky delay
+    offset: ["0.2 1", "0.8 0"],
   });
 
   return (
     <div
       ref={containerRef}
-      className="h-[400vh] relative bg-background text-white"
+      className="h-[180vh] relative bg-background text-white"
     >
       <div className="sticky top-10 h-screen w-full flex items-center justify-center overflow-hidden">
         <motion.h1 className="absolute top-11 text-2xl md:text-4xl font-bold text-primary z-10">
@@ -50,8 +50,8 @@ export const AnimatedCards = () => {
           // Responsive intervals: reduced gap and slower speed
           const isMobile =
             typeof window !== "undefined" && window.innerWidth < 768;
-          const interval = isMobile ? 0.12 : 0.08;
-          const duration = isMobile ? 0.5 : 0.25;
+          const interval = isMobile ? 0.12 : 0.15; // Reduced gap between cards
+          const duration = isMobile ? 0.5 : 0.5; // Slower transitions for better visibility
 
           const start = index * interval;
           const mid = start + duration * 0.5;
