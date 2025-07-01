@@ -12,7 +12,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;  
+      const currentScrollY = window.scrollY;
       if (currentScrollY > lastScrollY && currentScrollY > 80) {
         setShowHeader(false);
       } else {
@@ -31,7 +31,7 @@ const Header = () => {
   return (
     <header
       className={cn(
-        "w-full sticky top-0 z-50 transition-transform duration-300 bg-background border-b",
+        "w-full z-[999] sticky top-0  transition-transform duration-300 bg-background border-b",
         showHeader ? "translate-y-0" : "-translate-y-full"
       )}
     >
@@ -47,7 +47,7 @@ const Header = () => {
         {/* Desktop Right Side */}
         <div className="hidden md:flex items-center gap-4">
           <ModeToggle />
-          <Button variant="default">Button</Button>
+          <Button variant="default">Get Started</Button>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -75,9 +75,9 @@ const Header = () => {
         )}
       >
         <div className="rounded-md border bg-card p-2 shadow-sm">
-          <MobileNavMenu  closeMenu={() => setIsMobileMenuOpen(false)}/>
+          <MobileNavMenu closeMenu={() => setIsMobileMenuOpen(false)} />
           <Button variant="default" className="mt-4 w-full">
-            Button
+            Get Started
           </Button>
         </div>
       </div>

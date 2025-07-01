@@ -2,16 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import iotAnimation from "@/animations/iot.json";
-import {
-  SatelliteDish,
-  Wifi,
-  Router,
-  Activity,
-  CloudLightning,
-  SignalHigh,
-  PackageCheck,
-  ShieldCheck,
-} from "lucide-react";
+import { SatelliteDish, Wifi, Router, Activity } from "lucide-react";
 import { Grid } from "@/components/Grid";
 import GridProduct from "@/components/ProductCard";
 
@@ -52,7 +43,7 @@ const projects = [
     title: "SenseNet Grid",
     description:
       "A distributed sensor network that monitors environmental data like temperature, humidity, and air quality in real time, with cloud sync and local edge computing.",
-    image: "/Projects/IOT/IOT1.png",
+    image: "/Projects/Iot/Iot1.png",
     href: "https://tamizhkalam.com",
     themeColor: "green",
   },
@@ -60,7 +51,7 @@ const projects = [
     title: "SmartPulse Home",
     description:
       "A full-stack home automation system that connects lighting, security, and appliances via MQTT and voice assistants for seamless smart living.",
-    image: "/Projects/IOT/IOT2.png",
+    image: "/Projects/Iot/Iot2.png",
     href: "https://tamizhkalam.com",
     themeColor: "green",
   },
@@ -68,7 +59,7 @@ const projects = [
     title: "TrackFleet IQ",
     description:
       "An IoT-powered vehicle tracking and diagnostics platform with real-time GPS, predictive maintenance alerts, and driving behavior insights.",
-    image: "/Projects/IOT/IOT3.png",
+    image: "/Projects/Iot/Iot3.png",
     href: "https://tamizhkalam.com",
     themeColor: "green",
   },

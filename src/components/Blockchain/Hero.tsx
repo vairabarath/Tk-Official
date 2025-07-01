@@ -1,5 +1,3 @@
-// components/BlockchainHero.tsx
-"use client";
 import Lottie from "lottie-react";
 import crypto from "@/animations/crypto.json";
 import { motion } from "framer-motion";

@@ -1,9 +1,4 @@
-import {
-  Facebook,
-  LinkedinIcon,
-  LucideFacebook,
-  LucideTwitter,
-} from "lucide-react";
+import { LinkedinIcon, LucideFacebook, LucideTwitter } from "lucide-react";
 
 export type SocialMedia = {
   name: string;

@@ -24,7 +24,7 @@ const BlockchainSection = () => {
   return (
     <div className="pt-12 bg-background transition-colors duration-300">
       <div className="container mx-auto text-center">
-        <h2 className="text-2xl md:text-4xl font-bold mb-6 mx-2 md:mb-8 text-gray-900 dark:text-gray-100">
+        <h2 className="text-2xl md:text-4xl font-bold mb-6 mx-2 md:mb-12 text-gray-900 dark:text-gray-100">
           Leading Industry Chains We Have Experience With
         </h2>
 

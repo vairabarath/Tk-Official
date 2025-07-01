@@ -7,7 +7,9 @@ const Home = () => {
     <div>
       <HeroSection />
       <FeatureSection />
-      <BlockchainSection />
+      <section className="bg-background pb-16">
+        <BlockchainSection />
+      </section>
     </div>
   );
 };

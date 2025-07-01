@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Lottie from "lottie-react";
 import {
   Accordion,
@@ -40,26 +40,40 @@ const featureData: Record<FeatureKey, FeatureData> = {
   },
 };
 
+const featureKeys: FeatureKey[] = ["blockchain", "ai", "iot"];
+
 const FeatureSection = () => {
   const [activeFeature, setActiveFeature] = useState<FeatureKey>("blockchain");
 
+  // Auto-cycle logic
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveFeature((prev) => {
+        const currentIndex = featureKeys.indexOf(prev);
+        const nextIndex = (currentIndex + 1) % featureKeys.length;
+        return featureKeys[nextIndex];
+      });
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="py-16 bg-muted dark:bg-background transition-colors duration-300">
+    <section className="py-16 bg-background transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
         {/* Accordion with vertical line and dots */}
         <div className="relative w-full pl-8">
-          {/* Vertical timeline line */}
           <div className="absolute left-3 top-0 bottom-0 w-px bg-purple-300/50" />
 
           <Accordion
             type="single"
             collapsible
-            defaultValue="blockchain"
+            value={activeFeature}
             onValueChange={(value) => {
               if (value) setActiveFeature(value as FeatureKey);
             }}
           >
-            {(Object.keys(featureData) as FeatureKey[]).map((key, _index) => {
+            {(Object.keys(featureData) as FeatureKey[]).map((key) => {
               const isActive = activeFeature === key;
 
               return (
@@ -67,12 +81,12 @@ const FeatureSection = () => {
                   <div
                     className={`absolute -left-[25px] top-7 w-3 h-3 rounded-full z-10 transition-all duration-500 ease-out ${
                       isActive
-                        ? "bg-purple-600 scale-125 shadow-lg shadow-purple-600/50"
-                        : "bg-purple-400 scale-100"
+                        ? "bg-violet scale-125 shadow-lg shadow-violet"
+                        : "bg-violet scale-100"
                     }`}
                   >
                     {isActive && (
-                      <div className="absolute inset-0 rounded-full bg-purple-600 animate-ping opacity-75" />
+                      <div className="absolute inset-0 rounded-full bg-violet animate-ping opacity-75" />
                     )}
                   </div>
 
@@ -80,8 +94,8 @@ const FeatureSection = () => {
                     <AccordionTrigger
                       className={`text-2xl md:text-3xl font-semibold hover:no-underline transition-all duration-300 ease-out ${
                         isActive
-                          ? "text-purple-600 dark:text-purple-400"
-                          : "text-foreground hover:text-purple-600 dark:hover:text-purple-400"
+                          ? "text-violet"
+                          : "text-foreground hover:text-violet"
                       }`}
                     >
                       <span className="flex items-center gap-3">
@@ -114,7 +128,7 @@ const FeatureSection = () => {
           </Accordion>
         </div>
 
-        {/* Animation (Right - Desktop only) with smooth transitions */}
+        {/* Lottie Animation (Desktop only) */}
         <div className="hidden md:flex w-full h-80 md:h-[400px] justify-center items-center self-start">
           <div className="w-full max-w-md h-full relative overflow-hidden rounded-xl">
             <Lottie

@@ -1,16 +1,7 @@
 import BlockchainSection from "@/components/Home/Chains";
 import BlockchainHero from "@/components/Blockchain/Hero";
 
-import {
-  DatabaseZap,
-  Network,
-  Lock,
-  ShieldCheck,
-  ScrollText,
-  Landmark,
-  BadgeDollarSign,
-  Link2,
-} from "lucide-react";
+import { DatabaseZap, Network, Lock, ShieldCheck } from "lucide-react";
 import { Grid } from "@/components/Grid";
 import GridProduct from "@/components/ProductCard";
 
