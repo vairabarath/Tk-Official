@@ -1,10 +1,5 @@
-// pages/iot.tsx
-
-"use client";
-
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import Lottie from "lottie-react";
 import iotAnimation from "@/animations/iot.json";
 import {
@@ -17,8 +12,8 @@ import {
   PackageCheck,
   ShieldCheck,
 } from "lucide-react";
-import type { Variants } from "framer-motion";
 import { Grid } from "@/components/Grid";
+import GridProduct from "@/components/ProductCard";
 
 type Feature = {
   title: string;
@@ -50,40 +45,34 @@ const features: Feature[] = [
       "Centralized dashboards and automation for industrial and home IoT.",
     icon: <Activity className="h-8 w-8 text-[#00fdb9]" />,
   },
-  {
-    title: "Cloud Integration",
-    description:
-      "Secure cloud pipelines to aggregate, analyze, and act on IoT data.",
-    icon: <CloudLightning className="h-8 w-8 text-[#00fdb9]" />,
-  },
-  {
-    title: "Scalability",
-    description:
-      "Robust infrastructure designed to scale with growing IoT ecosystems.",
-    icon: <SignalHigh className="h-8 w-8 text-[#00fdb9]" />,
-  },
-  {
-    title: "Device Lifecycle Management",
-    description:
-      "From provisioning to decommissioning — manage devices the smart way.",
-    icon: <PackageCheck className="h-8 w-8 text-[#00fdb9]" />,
-  },
-  {
-    title: "End-to-End Security",
-    description:
-      "Secure boot, OTA updates, and AES-256 encryption baked in by default.",
-    icon: <ShieldCheck className="h-8 w-8 text-[#00fdb9]" />,
-  },
 ];
 
-const fadeIn: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.2, duration: 0.6, ease: "easeOut" },
-  }),
-};
+const projects = [
+  {
+    title: "SenseNet Grid",
+    description:
+      "A distributed sensor network that monitors environmental data like temperature, humidity, and air quality in real time, with cloud sync and local edge computing.",
+    image: "/Projects/IOT/IOT1.png",
+    href: "https://tamizhkalam.com",
+    themeColor: "green",
+  },
+  {
+    title: "SmartPulse Home",
+    description:
+      "A full-stack home automation system that connects lighting, security, and appliances via MQTT and voice assistants for seamless smart living.",
+    image: "/Projects/IOT/IOT2.png",
+    href: "https://tamizhkalam.com",
+    themeColor: "green",
+  },
+  {
+    title: "TrackFleet IQ",
+    description:
+      "An IoT-powered vehicle tracking and diagnostics platform with real-time GPS, predictive maintenance alerts, and driving behavior insights.",
+    image: "/Projects/IOT/IOT3.png",
+    href: "https://tamizhkalam.com",
+    themeColor: "green",
+  },
+];
 
 export default function IotPage() {
   const [mounted, setMounted] = useState(false);
@@ -125,23 +114,13 @@ export default function IotPage() {
           <Grid features={features} />
         </div>
 
-        {/* CTA */}
-        <motion.section
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center space-y-4 w-full"
-        >
-          <h2 className="text-3xl font-semibold">Connect. Control. Scale.</h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            From concept to deployment — we provide end-to-end IoT development
-            and support tailored for your needs.
-          </p>
-          <Button className="bg-indigo-600 text-white hover:bg-indigo-700">
-            Let's Build Your IoT Stack
-          </Button>
-        </motion.section>
+        {/* projects */}
+        <section className="my-16">
+          <h2 className="text-3xl md:text-4xl text-center mb-7 font-bold text-[#6366f1]">
+            Projects
+          </h2>
+          <GridProduct projects={projects as any} />
+        </section>
       </div>
     </main>
   );

@@ -1,6 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import BlockchainSection from "@/components/Home/Chains";
-import CustomSwiper from "@/components/ui/swiper";
 import BlockchainHero from "@/components/Blockchain/Hero";
 
 import {
@@ -14,6 +12,7 @@ import {
   Link2,
 } from "lucide-react";
 import { Grid } from "@/components/Grid";
+import GridProduct from "@/components/ProductCard";
 
 type Feature = {
   title: string;
@@ -46,29 +45,32 @@ const blockchainFeatures: Feature[] = [
       "Run self-executing code directly on the blockchain for automation and trustless logic.",
     icon: <ShieldCheck className="h-8 w-8 text-[#3b82f6]" />,
   },
+];
+
+const projects = [
   {
-    title: "On-Chain Governance",
+    title: "ChainFund Vault",
     description:
-      "Enable decentralized voting mechanisms and community-led decision making.",
-    icon: <ScrollText className="h-8 w-8 text-[#3b82f6]" />,
+      "A decentralized crowdfunding platform powered by smart contracts, ensuring secure and transparent funding rounds without intermediaries.",
+    image: "/Projects/BlockChain/Blockchain1.png",
+    href: "https://tamizhkalam.com",
+    themeColor: "blue",
   },
   {
-    title: "Tokenized Assets",
+    title: "MetaLedger ID",
     description:
-      "Represent real or digital assets as blockchain tokens to enable programmable value.",
-    icon: <BadgeDollarSign className="h-8 w-8 text-[#3b82f6]" />,
+      "Blockchain-based digital identity system offering secure, verifiable credentials across Web3 platforms — no central authority required.",
+    image: "/Projects/BlockChain/BlockChain2.png",
+    href: "https://tamizhkalam.com",
+    themeColor: "blue",
   },
   {
-    title: "Interoperability",
+    title: "BitTrace Explorer",
     description:
-      "Facilitate cross-chain communication and asset transfers between blockchain networks.",
-    icon: <Link2 className="h-8 w-8 text-[#3b82f6]" />,
-  },
-  {
-    title: "Regulatory Compliance",
-    description:
-      "Implement KYC/AML and audit trails without compromising decentralization.",
-    icon: <Landmark className="h-8 w-8 text-[#3b82f6]" />,
+      "A real-time blockchain analytics dashboard that visualizes transactions, detects anomalies, and helps trace wallet activity across chains.",
+    image: "/Projects/BlockChain/BlockChain3.png",
+    href: "https://tamizhkalam.com",
+    themeColor: "blue",
   },
 ];
 
@@ -82,6 +84,13 @@ const BlockchainPage = () => {
         <Grid features={blockchainFeatures} />
       </section>
 
+      {/* projects */}
+      <section className="my-16">
+        <h2 className="text-3xl md:text-4xl text-center mb-5 font-bold text-[#3b82f6]">
+          Projects
+        </h2>
+        <GridProduct projects={projects as any} />
+      </section>
       {/* chains list */}
       <section className="mt-16">
         <BlockchainSection />

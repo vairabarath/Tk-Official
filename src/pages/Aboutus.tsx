@@ -1,5 +1,7 @@
-import { AnimatedCards } from "@/components/animatedCards";
-import { LampContainer } from "@/components/ui/lamp";
+import { AnimatedCards } from "@/components/AboutUS/animatedCards";
+import { LampContainer } from "@/components/AboutUS/lamp";
+import { ProfileCards } from "@/components/AboutUS/profile";
+
 import { motion } from "motion/react";
 
 const Aboutus = () => {
@@ -25,8 +27,11 @@ const Aboutus = () => {
           </p>
         </motion.div>
       </LampContainer>
-      <section className="h-[400vh] relative bg-background text-white">
+      <section className="w-full relative bg-background text-foreground">
         <AnimatedCards />
+      </section>
+      <section>
+        <ProfileCards />
       </section>
     </div>
   );

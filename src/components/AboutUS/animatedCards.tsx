@@ -6,25 +6,25 @@ const cardData = [
     title: "Empowering Intelligent Futures",
     description:
       "Our mission is to integrate AI into every facet of business, driving smarter operations, predictive insights, and automated efficiency for a future where data works for you.",
-    image: "/missions/mission1.png", // Image: Futuristic AI interface, data visualization
+    image: "/missions/mission1.png",
   },
   {
     title: "Building Trust Through Decentralization",
     description:
       "We're on a mission to pioneer secure and transparent ecosystems using Blockchain, ensuring immutable data integrity, verifiable transactions, and unparalleled trust across industries.",
-    image: "/missions/mission@2.png", // Image: Blockchain network, secure digital lock
+    image: "/missions/mission@2.png",
   },
   {
     title: "Connecting the World, Intelligently",
     description:
       "Our mission is to deploy cutting-edge IoT solutions that bridge the physical and digital, creating smart environments, optimizing resource management, and enhancing real-time decision-making.",
-    image: "/missions/mission3.png", // Image: Connected devices, smart city scape
+    image: "/missions/mission3.png",
   },
   {
     title: "Innovating for a Smarter Tomorrow",
     description:
       "United by a vision of technological advancement, we strive to continually innovate, blending AI, Blockchain, and IoT to solve complex challenges and create impactful solutions for humanity.",
-    image: "/missions/mission3.png", // Image: Abstract representation of innovation, gears, lightbulb
+    image: "/missions/mission3.png",
   },
 ];
 
@@ -32,31 +32,39 @@ export const AnimatedCards = () => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    // Modified offset: animation starts when section is 80% visible
-    // and completes faster to avoid sticky delay
-    offset: ["0.2 1", "0.8 0"],
+    // Extended offset to ensure last card completes animation
+    offset: ["0.1 1", "1 0"],
   });
 
   return (
     <div
       ref={containerRef}
-      className="h-[180vh] relative bg-background text-white"
+      // Increased container height to give more scroll space
+      className="relative bg-background text-foreground h-[300vh] md:h-[350vh] lg:h-[280vh]"
     >
       <div className="sticky top-10 h-screen w-full flex items-center justify-center overflow-hidden">
         <motion.h1 className="absolute top-11 text-2xl md:text-4xl font-bold text-primary z-10">
           Missions{" "}
         </motion.h1>
         {cardData.map((card, index) => {
-          // Responsive intervals: reduced gap and slower speed
+          // Responsive intervals with better timing
           const isMobile =
             typeof window !== "undefined" && window.innerWidth < 768;
-          const interval = isMobile ? 0.12 : 0.15; // Reduced gap between cards
-          const duration = isMobile ? 0.5 : 0.5; // Slower transitions for better visibility
+          const interval = isMobile ? 0.29 : 0.18; // Slightly increased interval
+          const duration = isMobile ? 0.59 : 0.5; // Shorter duration for smoother transitions
 
           const start = index * interval;
           const mid = start + duration * 0.5;
           const end = start + duration;
-          const inputRange = [start, mid, end];
+
+          // Ensure the last card has enough time to complete
+          const totalAnimationTime =
+            (cardData.length - 1) * interval + duration;
+          const normalizedStart = start / totalAnimationTime;
+          const normalizedMid = mid / totalAnimationTime;
+          const normalizedEnd = end / totalAnimationTime;
+
+          const inputRange = [normalizedStart, normalizedMid, normalizedEnd];
 
           const x = useTransform(scrollYProgress, inputRange, [
             "100vw",
