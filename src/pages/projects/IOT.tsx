@@ -107,7 +107,7 @@ export default function IotPage() {
 
         {/* projects */}
         <section className="my-16">
-          <h2 className="text-3xl md:text-4xl text-center mb-7 font-bold text-[#6366f1]">
+          <h2 className="text-3xl md:text-4xl text-center mb-7 font-bold text-[#00fdb9]">
             Projects
           </h2>
           <GridProduct projects={projects as any} />
