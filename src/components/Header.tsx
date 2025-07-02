@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, Settings, X } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
 import { MobileNavMenu, NavMenu } from "./Navbar"; // full menu (desktop)
 import { Button } from "@/components/ui/button";
@@ -37,7 +37,14 @@ const Header = () => {
     >
       <div className="flex h-[88px] justify-between items-center max-w-7xl mx-auto px-4">
         {/* Logo */}
-        <h1 className="text-xl font-bold">Logo</h1>
+        <div className="flex items-center space-x-2">
+          <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
+            <Settings className="w-5 h-5 text-white" />
+          </div>
+          <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            Sheechan
+          </span>
+        </div>
 
         {/* Desktop Nav */}
         <div className="hidden md:block p-1 bg-background rounded-md shadow-sm border-2">
