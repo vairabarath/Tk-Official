@@ -112,12 +112,30 @@ export const AnimatedTestimonials = ({
               ease: "easeInOut",
             }}
           >
-            <h3 className="text-2xl font-bold text-foreground">
-              {testimonials[active].name}
-            </h3>
-            <p className="text-sm text-muted-foreground">
-              {testimonials[active].designation}
-            </p>
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-2xl font-bold text-foreground">
+                  {testimonials[active].name}
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  {testimonials[active].designation}
+                </p>
+              </div>
+              <div className="flex items-center gap-4 md:hidden">
+                <button
+                  onClick={handlePrev}
+                  className="group/button flex h-7 w-7 items-center justify-center rounded-full bg-primary"
+                >
+                  <ArrowBigLeft className="h-5 w-5 text-background transition-transform duration-300 group-hover/button:rotate-12" />
+                </button>
+                <button
+                  onClick={handleNext}
+                  className="group/button flex h-7 w-7 items-center justify-center rounded-full bg-primary"
+                >
+                  <ArrowBigRight className="h-5 w-5 text-background transition-transform duration-300 group-hover/button:-rotate-12 " />
+                </button>
+              </div>
+            </div>
             <motion.p className="mt-8 text-lg text-gray-500 dark:text-neutral-300">
               {testimonials[active].quote.split(" ").map((word, index) => (
                 <motion.span
@@ -144,7 +162,7 @@ export const AnimatedTestimonials = ({
               ))}
             </motion.p>
           </motion.div>
-          <div className="flex gap-4 pt-12 md:pt-6">
+          <div className="gap-4 pt-12 hidden md:flex md:pt-6">
             <button
               onClick={handlePrev}
               className="group/button flex h-7 w-7 items-center justify-center rounded-full bg-primary"

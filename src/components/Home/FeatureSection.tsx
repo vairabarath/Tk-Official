@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Lottie from "lottie-react";
 import {
   Accordion,
@@ -44,36 +44,66 @@ const featureKeys: FeatureKey[] = ["blockchain", "ai", "iot"];
 
 const FeatureSection = () => {
   const [activeFeature, setActiveFeature] = useState<FeatureKey>("blockchain");
+  const [isManual, setIsManual] = useState(false);
 
-  // Auto-cycle logic
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveFeature((prev) => {
-        const currentIndex = featureKeys.indexOf(prev);
-        const nextIndex = (currentIndex + 1) % featureKeys.length;
-        return featureKeys[nextIndex];
-      });
-    }, 6000);
+    const isMobile = window.innerWidth < 768;
+    if (isManual) return;
+
+    const interval = setInterval(
+      () => {
+        setActiveFeature((prev) => {
+          const currentIndex = featureKeys.indexOf(prev);
+          const nextIndex = (currentIndex + 1) % featureKeys.length;
+          return featureKeys[nextIndex];
+        });
+      },
+      isMobile ? 8000 : 6000
+    );
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isManual]);
+
+  useEffect(() => {
+    if (!isManual) return;
+    const timeout = setTimeout(() => {
+      setIsManual(false);
+    }, 30000);
+
+    return () => clearTimeout(timeout);
+  }, [isManual]);
+
+  const handleChange = (value: string) => {
+    if (value) {
+      setIsManual(true);
+      setActiveFeature(value as FeatureKey);
+    }
+  };
+
+  const MemoizedAnimation = useMemo(() => {
+    return (
+      <Lottie
+        animationData={featureData[activeFeature].animation}
+        loop
+        className="w-full h-full object-contain transition-transform duration-500 ease-out hover:scale-105"
+      />
+    );
+  }, [activeFeature]);
 
   return (
     <section className="py-16 bg-background transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
-        {/* Accordion with vertical line and dots */}
+        {/* Accordion */}
         <div className="relative w-full pl-8">
-          <div className="absolute left-3 top-0 bottom-0 w-px bg-purple-300/50" />
+          <div className="absolute left-3 top-0 bottom-0 w-px bg-violet/50" />
 
           <Accordion
             type="single"
             collapsible
             value={activeFeature}
-            onValueChange={(value) => {
-              if (value) setActiveFeature(value as FeatureKey);
-            }}
+            onValueChange={handleChange}
           >
-            {(Object.keys(featureData) as FeatureKey[]).map((key) => {
+            {featureKeys.map((key) => {
               const isActive = activeFeature === key;
 
               return (
@@ -81,8 +111,8 @@ const FeatureSection = () => {
                   <div
                     className={`absolute -left-[25px] top-7 w-3 h-3 rounded-full z-10 transition-all duration-500 ease-out ${
                       isActive
-                        ? "bg-violet scale-125 shadow-lg shadow-violet"
-                        : "bg-violet scale-100"
+                        ? "bg-violet scale-125 shadow-lg shadow-violet/70"
+                        : "bg-violet"
                     }`}
                   >
                     {isActive && (
@@ -109,15 +139,13 @@ const FeatureSection = () => {
                           {featureData[key].description}
                         </p>
 
-                        {/* Lottie inside description (Mobile only) */}
+                        {/* ✅ Mobile Animation */}
                         <div className="block md:hidden w-full h-52 sm:h-64 overflow-hidden rounded-lg">
-                          <div className="w-full h-full transform transition-all duration-700 ease-out hover:scale-105">
-                            <Lottie
-                              animationData={featureData[key].animation}
-                              loop
-                              className="w-full h-full object-contain"
-                            />
-                          </div>
+                          <Lottie
+                            animationData={featureData[key].animation}
+                            loop
+                            className="w-full h-full object-contain"
+                          />
                         </div>
                       </div>
                     </AccordionContent>
@@ -128,14 +156,10 @@ const FeatureSection = () => {
           </Accordion>
         </div>
 
-        {/* Lottie Animation (Desktop only) */}
+        {/* ✅ Desktop Animation (Memoized) */}
         <div className="hidden md:flex w-full h-80 md:h-[400px] justify-center items-center self-start">
           <div className="w-full max-w-md h-full relative overflow-hidden rounded-xl">
-            <Lottie
-              animationData={featureData[activeFeature].animation}
-              loop
-              className="w-full h-full object-contain transition-transform duration-500 ease-out hover:scale-105"
-            />
+            {MemoizedAnimation}
           </div>
         </div>
       </div>

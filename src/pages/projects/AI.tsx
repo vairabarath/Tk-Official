@@ -66,9 +66,9 @@ const projects = [
 
 export default function AiPage() {
   return (
-    <main className="min-h-screen flex flex-col">
+    <main className="min-h-screen flex flex-col overflow-x-hidden">
       <HeroSection />
-      <section className="mb-16">
+      <section className="mt-16">
         <Grid features={aiFeatures} />
       </section>
 

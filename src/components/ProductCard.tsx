@@ -17,7 +17,7 @@ const ProjectCard = ({
 }: ProjectCardProps) => {
   return (
     <PinContainer title={href} href={href} themeColor={themeColor}>
-      <div className="flex basis-full flex-col p-4 tracking-tight text-neutral-700 dark:text-neutral-200 sm:basis-1/2 w-[20rem] h-[20rem]">
+      <div className="flex basis-full flex-col p-4 tracking-tight text-neutral-700 dark:text-neutral-200 sm:basis-1/2  w-[18rem] md:w-[22rem] lg:w-[20rem] h-[20rem]">
         <h3 className="max-w-xs !pb-2 !m-0 font-bold text-base text-neutral-900 dark:text-white">
           {title}
         </h3>
@@ -45,7 +45,7 @@ type GridProductProps = {
 export default function GridProduct({ projects }: GridProductProps) {
   return (
     <div className=" max-w-7xl mx-auto px-6 py-20 bg-background transition-colors duration-300">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 place-items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-15 md:gap-10 place-items-center">
         {projects.map((project, index) => (
           <ProjectCard
             key={index}

@@ -20,7 +20,7 @@ export function Grid({ features }: GridProps) {
   return (
     <div className="relative z-10 w-full max-w-7xl mx-auto">
       {isMobile ? (
-        <div className="w-full px-4 mb-8 overflow-hidden">
+        <div className="w-full h-auto px-4 mb-8 overflow-hidden">
           <Swiper
             spaceBetween={16}
             slidesPerView={1.2}
@@ -96,7 +96,7 @@ const Feature = ({
   const cardBaseStyles = isMobile
     ? cn(
         "border border-neutral-200 dark:border-neutral-800 rounded-xl p-6",
-        "bg-neutral-100 dark:bg-neutral-900/50 backdrop-blur-sm h-full flex flex-col"
+        "bg-neutral-100 dark:bg-neutral-900/50 backdrop-blur-sm h-auto flex flex-col"
       )
     : cn(
         "relative group/feature py-10",
