@@ -1,36 +1,68 @@
+import { Mail, Settings } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-8">
-      <div className="max-w-7xl mx-auto px-4 md:flex md:justify-between">
-
-        {/* Links Section */}
-        <div className="mb-6 md:mb-0 ">
-            <h2 className="text-xl font-semibold mb-2">Quick Navigation</h2>
-          <ul className="space-y-2">
-            <li><a href="#" className="text-gray-400 text-sm hover:text-white">HOME</a></li>
-            <li><a href="#" className="text-gray-400 text-sm hover:text-white">ABOUT US</a></li>
-            <li><a href="#" className="text-gray-400 text-sm hover:text-white">CONTACT US</a></li>
-            <li><a href="#" className="text-gray-400 text-sm hover:text-white">PRODUCTS</a></li>
-          </ul>
-        </div>
-
-        {/* About Section */}
-        <div className="mb-6 md:mb-0 ">
-          <h2 className="text-xl font-semibold mb-2">Links</h2>
-          <p className="text-gray-400">About us, mission, and values.</p>
-        </div>  
-
-        {/* Contact Section */}
-        <div className="">
-          <h2 className="text-xl font-semibold mb-2">Contact</h2>
-          <p className="text-gray-400">Email: contact@example.com</p>
-          <p className="text-gray-400">Phone: +123 456 7890</p>
-        </div>
+    <footer className="bg-slate-900 text-white border-t border-slate-800">
+      {/* Animated gear */}
+      <div className="absolute right-8 top-4 opacity-20">
+        <Settings
+          className="w-8 h-8 text-blue-400 animate-spin"
+          style={{ animationDuration: "8s" }}
+        />
       </div>
 
-      <div className="mt-8 border-t border-gray-700 pt-4 text-center text-sm text-gray-500">
-        &copy; 2025 Your Company. All rights reserved.
+      <div className="max-w-6xl mx-auto px-6 py-8">
+        <div className="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
+          {/* Logo */}
+          <div className="flex items-center space-x-2">
+            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
+              <Settings className="w-5 h-5 text-white" />
+            </div>
+            <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              TechSolutions
+            </span>
+          </div>
+
+          {/* Navigation */}
+          <nav className="flex space-x-8">
+            <a
+              href="#"
+              className="text-gray-300 hover:text-white transition-colors duration-200"
+            >
+              Home
+            </a>
+            <a
+              href="#"
+              className="text-gray-300 hover:text-white transition-colors duration-200"
+            >
+              About
+            </a>
+            <a
+              href="#"
+              className="text-gray-300 hover:text-white transition-colors duration-200"
+            >
+              Contact
+            </a>
+          </nav>
+
+          {/* Email */}
+          <div className="flex items-center space-x-2">
+            <Mail className="w-4 h-4 text-blue-400" />
+            <a
+              href="mailto:info@techsolutions.com"
+              className="text-gray-300 hover:text-blue-400 transition-colors duration-200"
+            >
+              info@techsolutions.com
+            </a>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="mt-6 pt-6 border-t border-slate-800 text-center">
+          <p className="text-gray-400 text-sm">
+            © 2024 TechSolutions. All rights reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );
