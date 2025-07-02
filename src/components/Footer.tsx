@@ -52,7 +52,7 @@ const Footer = () => {
               href="mailto:info@techsolutions.com"
               className="text-gray-300 hover:text-blue-400 transition-colors duration-200"
             >
-              info@techsolutions.com
+              info@Sheechan.com
             </a>
           </div>
         </div>
