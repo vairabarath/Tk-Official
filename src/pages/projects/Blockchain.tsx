@@ -4,6 +4,7 @@ import BlockchainHero from "@/components/Blockchain/Hero";
 import { DatabaseZap, Network, Lock, ShieldCheck } from "lucide-react";
 import { Grid } from "@/components/Grid";
 import GridProduct from "@/components/ProductCard";
+import { blockchainProjects } from "@/data/projects-data";
 
 type Feature = {
   title: string;
@@ -38,33 +39,6 @@ const blockchainFeatures: Feature[] = [
   },
 ];
 
-const projects = [
-  {
-    title: "ChainFund Vault",
-    description:
-      "A decentralized crowdfunding platform powered by smart contracts, ensuring secure and transparent funding rounds without intermediaries.",
-    image: "/Projects/BlockChain/Blockchain1.png",
-    href: "https://tamizhkalam.com",
-    themeColor: "blue",
-  },
-  {
-    title: "MetaLedger ID",
-    description:
-      "Blockchain-based digital identity system offering secure, verifiable credentials across Web3 platforms — no central authority required.",
-    image: "/Projects/BlockChain/BlockChain2.png",
-    href: "https://tamizhkalam.com",
-    themeColor: "blue",
-  },
-  {
-    title: "BitTrace Explorer",
-    description:
-      "A real-time blockchain analytics dashboard that visualizes transactions, detects anomalies, and helps trace wallet activity across chains.",
-    image: "/Projects/BlockChain/BlockChain3.png",
-    href: "https://tamizhkalam.com",
-    themeColor: "blue",
-  },
-];
-
 const BlockchainPage = () => {
   return (
     <main className="bg-background text-foreground min-h-screen overflow-x-hidden">
@@ -80,7 +54,7 @@ const BlockchainPage = () => {
         <h2 className="text-3xl md:text-4xl text-center mb-5 font-bold text-[#3b82f6]">
           Projects
         </h2>
-        <GridProduct projects={projects as any} />
+        <GridProduct projects={blockchainProjects} />
       </section>
       {/* chains list */}
       <section className="mt-16">

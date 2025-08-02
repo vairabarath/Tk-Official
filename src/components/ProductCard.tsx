@@ -1,6 +1,6 @@
 import { PinContainer } from "./ui/3d-pin";
 
-type ProjectCardProps = {
+export type ProjectCardProps = {
   title: string;
   description: string;
   image: string;
@@ -38,11 +38,11 @@ const ProjectCard = ({
   );
 };
 
-type GridProductProps = {
+export type ProjectListProps = {
   projects: ProjectCardProps[];
 };
 
-export default function GridProduct({ projects }: GridProductProps) {
+export default function GridProduct({ projects }: ProjectListProps) {
   return (
     <div className=" max-w-7xl mx-auto px-6 py-20 bg-background transition-colors duration-300">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-15 md:gap-10 place-items-center">

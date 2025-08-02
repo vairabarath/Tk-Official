@@ -4,6 +4,8 @@ import { SatelliteDish, Wifi, Router, Activity } from "lucide-react";
 import { Grid } from "@/components/Grid";
 import GridProduct from "@/components/ProductCard";
 import IotHero from "@/components/Iot/Hero";
+import { iotProjects } from "@/data/projects-data";
+
 
 type Feature = {
   title: string;
@@ -37,33 +39,6 @@ const features: Feature[] = [
   },
 ];
 
-const projects = [
-  {
-    title: "SenseNet Grid",
-    description:
-      "A distributed sensor network that monitors environmental data like temperature, humidity, and air quality in real time, with cloud sync and local edge computing.",
-    image: "/Projects/Iot/Iot1.png",
-    href: "https://tamizhkalam.com",
-    themeColor: "green",
-  },
-  {
-    title: "SmartPulse Home",
-    description:
-      "A full-stack home automation system that connects lighting, security, and appliances via MQTT and voice assistants for seamless smart living.",
-    image: "/Projects/Iot/Iot2.png",
-    href: "https://tamizhkalam.com",
-    themeColor: "green",
-  },
-  {
-    title: "TrackFleet IQ",
-    description:
-      "An IoT-powered vehicle tracking and diagnostics platform with real-time GPS, predictive maintenance alerts, and driving behavior insights.",
-    image: "/Projects/Iot/Iot3.png",
-    href: "https://tamizhkalam.com",
-    themeColor: "green",
-  },
-];
-
 export default function IotPage() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
@@ -84,7 +59,7 @@ export default function IotPage() {
           <h2 className="text-3xl md:text-4xl text-center mb-7 font-bold text-[#00fdb9]">
             Projects
           </h2>
-          <GridProduct projects={projects as any} />
+          <GridProduct projects={iotProjects} />
         </section>
       </div>
     </main>

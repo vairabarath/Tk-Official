@@ -1,6 +1,7 @@
 import HeroSection from "@/components/AI/Hero";
 import { Grid } from "@/components/Grid";
 import GridProduct from "@/components/ProductCard";
+import { aiProjects } from "@/data/projects-data";
 import { Bot, Cpu, MessageSquareCode, ScanSearch } from "lucide-react";
 
 type Feature = {
@@ -36,34 +37,6 @@ const aiFeatures: Feature[] = [
   },
 ];
 
-// Projects
-const projects = [
-  {
-    title: "CodePilot AI",
-    description:
-      "An AI-powered coding assistant that autocompletes, explains, and debugs your code across multiple languages.",
-    image: "/Projects/AI/AI1.png",
-    href: "https://tamizhkalam.com",
-    themeColor: "purple",
-  },
-  {
-    title: "PixelMind Enhancer",
-    description:
-      "Uses GANs and diffusion models to upscale, restore, and enhance low-quality or damaged images in real-time.",
-    image: "/Projects/AI/AI2.png",
-    href: "https://tamizhkalam.com",
-    themeColor: "purple",
-  },
-  {
-    title: "EchoSynth",
-    description:
-      "A neural voice cloning system that can replicate any voice from just 10 seconds of audio.",
-    image: "/Projects/AI/AI3.png",
-    href: "https://tamizhkalam.com",
-    themeColor: "purple",
-  },
-];
-
 export default function AiPage() {
   return (
     <main className="min-h-screen flex flex-col overflow-x-hidden">
@@ -77,7 +50,7 @@ export default function AiPage() {
         <h2 className="text-3xl md:text-4xl text-center mb-7 font-bold text-[#6366f1]">
           Projects
         </h2>
-        <GridProduct projects={projects as any} />
+        <GridProduct projects={aiProjects} />
       </section>
     </main>
   );
