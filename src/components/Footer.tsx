@@ -19,7 +19,7 @@ const Footer = () => {
               <Settings className="w-5 h-5 text-white" />
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              Sheechan
+              Seechanlabs
             </span>
           </div>
 
@@ -49,10 +49,10 @@ const Footer = () => {
           <div className="flex items-center space-x-2">
             <Mail className="w-4 h-4 text-blue-400" />
             <a
-              href="mailto:info@techsolutions.com"
+              href="mailto:info@seechanlabs.com"
               className="text-gray-300 hover:text-blue-400 transition-colors duration-200"
             >
-              info@Sheechan.com
+              info@seechanlabs.com
             </a>
           </div>
         </div>
@@ -60,7 +60,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="mt-6 pt-6 border-t border-slate-800 text-center">
           <p className="text-gray-400 text-sm">
-            © 2024 TechSolutions. All rights reserved.
+            © 2026 Seechanlabs. All rights reserved.
           </p>
         </div>
       </div>
